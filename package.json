@@ -1,0 +1,33 @@
+{
+  "name": "3.8_cwiczenia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon app/index.js -e js, pug",
+    "debug": "nodemon --inspect index.js -e js, json, ejs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "chalk": "^4.1.2",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "json2csv": "^5.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.1.2",
+    "mongoose": "^6.0.6",
+    "multer": "^1.4.3",
+    "randomstring": "^1.2.1",
+    "rate-limiter-flexible": "^2.3.1"
+  }
+}

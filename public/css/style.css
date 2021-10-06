@@ -1,0 +1,13 @@
+body {
+  min-height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    338deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(25, 216, 255, 1) 100%
+  );
+}
+
+.site-logo {
+  max-height: 40px;
+}

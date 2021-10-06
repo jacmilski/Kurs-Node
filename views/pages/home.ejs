@@ -1,0 +1,10 @@
+<h1 class='mb-4'>To jest strona główna</h1>
+
+<% if (user) { %>
+<p class='fw-bold'>Zalogowano: </p>
+<p><strong>User:</strong> <%= user.email %></p>
+<p><strong>ID:</strong> <%= user._id %></p>
+<% } else { %>
+    <p>Witaj na naszej stronie. Jest to wyszukiwarka firm.</p>
+    <p>Załóż konto aby dodać własną.</p>
+<% } %>

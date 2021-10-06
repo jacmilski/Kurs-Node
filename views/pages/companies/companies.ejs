@@ -1,0 +1,73 @@
+<h2>Lista firm: </h2>
+
+<% if (user) { %>
+    <a class='btn btn-success' href='/admin/firmy/dodaj'>Dodaj nową firmę</a>
+<% } %>
+<div class="row">
+    <div class="col-2">
+        <a class='btn btn-info mt-2 btn-sm' href='/csv'>Pobierz CSV</a>
+    </div>
+</div>
+
+<form action='/firmy' method='GET'>
+    <%- include('partials/search') %>
+
+    <hr />
+    <div class='row'>
+        <div class='col-3'>
+            <%- include('partials/filters') %>
+        </div>
+        <div class='col-9'>
+            <% companies.forEach(company => { %>
+                <div class='card bg-light mb-3'>
+                    <div class='card-body'>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class='h3 mb-4'><%= company.name %></p>
+                                <div class='d-flex flex-column align-items-start'>
+                                    <button type="button" class="btn btn-light p-0">
+                                        <strong>employees: </strong><span class="badge bg-secondary"><%= company.employeesCount %></span>
+                                    </button>
+                                    <p class='p-0 my-0'><strong>Kontakt: </strong><%= company.user?.email %></p>
+                                    <p class='p-0 mt-0'>
+                                        <strong>CEO: </strong>
+                                            <%= company.user?.fullName %>
+                                    </p>
+                                </div>
+                                <!-- przyciski -->
+                                <a
+                                    href="/firmy/<%= company.slug %>"
+                                    class='btn btn-primary mb-2'
+                                >
+                                    Zobacz
+                                </a>
+                                <% if (user && locals.isMine == company.user._id) { %>
+                                <a
+                                    href="/admin/firmy/<%= company.slug %>/edytuj"
+                                    class='btn btn-success mb-2'
+                                >
+                                    Edytuj
+                                </a>
+                                <a
+                                    href="/admin/firmy/<%= company.slug %>/usun"
+                                    onClick="return confirm('Czy jesteś pewny ?')"
+                                    class='btn btn-danger mb-2'
+                                >
+                                    Usuń
+                                </a>
+                                <% } %>
+                            </div>
+                            <div class="col-8">
+                                <image src='/uploads/<%- company.image %>' alt='image' class='img-fluid'>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <% })%>
+        </div>
+    </div>
+
+    <%- include('partials/pagination')%>
+</form>

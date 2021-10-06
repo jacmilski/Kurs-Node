@@ -1,0 +1,13 @@
+<div class="mt-3 mb-5 d-flex">
+    <input
+        type="text"
+        class='form-control'
+        value='<%= query.q %>'
+        name='q'
+        placeholder="Szukaj...">
+    <button class='btn btn-secondary btn-sm ms-2'>Szukaj</button>
+</div>
+<% if (query.q) { %>
+    <p class='h3 mb-3'>Wyniki wyszukiwania dla frazy "<%- query.q %>":</p>
+<% } %>
+

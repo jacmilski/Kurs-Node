@@ -1,0 +1,69 @@
+<!-- enctype='multipart/form-data' -->
+<% if (isEnctype) { %>
+  <form method='POST' enctype='multipart/form-data'>
+<% } else { %>
+  <form method='POST'>
+<% } %>
+    <div class="mb-3">
+      <label for="" class="form-label">Nazwa firmy</label>
+      <input 
+        type="text"
+        value= "<%- form.name%>"
+        name='name'
+        class="form-control <%- errors?.name ? 'is-invalid' : '' %>"
+        required
+      >
+      <% if (errors?.name) { %>
+      <div class='invalid-feedback'><%= errors.name.message %></div>
+      <% } %>
+    </div>
+
+    <% if (showFile) { %>
+    <div class="row">
+      <div class="col-5">
+        <div class="mb-3">
+          <label for='image' class='form-label'>Zdjęcie</label>
+          <input id='image' type="file" name='image' class='form-control'>
+        </div>
+      </div>
+      <% if (form.image) { %>
+        <div class="col-7">
+          <image src='/uploads/<%- form.image %>' alt='' class='img-fluid'>
+          <a href='/admin/firmy/<%- form.slug %>/usun-zdjecie' class='btn btn-danger ms-5'>Usuń</a>
+        </div>
+      <% } %>
+    </div>
+    <% } %>
+
+
+    <div class="mb-3">
+        <label for="" class="form-label">Slug</label>
+        <input 
+          type="text"
+          value="<%- form.slug %>"
+          name='slug'
+          class="form-control <%- errors?.slug ? 'is-invalid' : '' %>"
+          required
+        >
+      <% if (errors?.slug) { %>
+          <div class='invalid-feedback'><%= errors.slug.message %></div>
+      <% } %>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Liczba pracowników</label>
+      <input 
+        type="number"
+        value="<%- form.employeesCount %>"
+        name="employeesCount"
+        class="form-control"
+      >
+    </div>
+    <button class="btn btn-primary"><%= buttonText %></button>
+  </form>
+
+  <% if (errors) { %>
+  <div class='alert alert-danger mt-3'>
+      Popraw dane w formularzu
+  </div>
+  <% } %>
